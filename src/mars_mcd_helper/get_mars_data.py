@@ -1,6 +1,7 @@
+"""Get data from the MCD by scraping the cgi interface."""
 import requests
 from bs4 import BeautifulSoup
-from logging import getLogger, INFO, DEBUG
+from logging import getLogger
 from pathlib import Path
 from typing import Union
 
@@ -10,7 +11,7 @@ logger = getLogger(__name__)
 base_params = {
     "datekeyhtml": 1,
     "ls": 85.3,
-    "localtime": 0.0,
+    "localtime": 0.0,  # noqa
     "year": None,
     "month": None,
     "day": None,
@@ -56,31 +57,38 @@ def generate_fn(**params) -> str:
     """Generate a unique filename from given params.
 
     Args:
-      **params: params to consider.
+        **params: params to consider.
 
     Returns:
-      Fn from params.
+        (str): Fn from params.
     """
     fn = "-".join(str(x) for _, x in params.items() if x)
     return f"marsdata_{fn}.txt"
+
+
+class FetchingError(Exception):
+    """Error fetching resource."""
 
 
 def fetch_data(outdir: Union[Path, str] = ".", **params):
     """Fetch data from the MCD and save in outdir.
 
     Args:
-      outdir:  Union[Path, str] (Default value = ".") dir to save in
-      **params: Parameters to override.
+        outdir (Union[Path, str]): dir to save in (Default value = ".")
+        **params: Parameters to override.
+
+    Raises:
+        FetchingError: Failed to fetch requested data.
 
     Returns:
-      Path to output file.
+        (Path): output file.
     """
     p = base_params.copy()
     p.update(params)
-    logger.info(f"Fetching page")
+    logger.info("Fetching page")
     r = requests.get(url, params=p)
     if "Ooops!" in r.text:
-        raise Exception(f"Failed to download, server said {r.text}")
+        raise FetchingError(f"Failed to download, server said {r.text}")
     soup = BeautifulSoup(r.text, features="html.parser")
     data_url = urlbase + soup.body.a["href"].replace("../", "")
     logger.info(f"Fetching ascii data from {data_url}")
