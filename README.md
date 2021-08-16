@@ -5,7 +5,18 @@
 [![pypi version](https://img.shields.io/pypi/v/mars-mcd-helper.svg)](https://pypi.org/project/mars-mcd-helper/)
 [![gitter](https://badges.gitter.im/join%20chat.svg)](https://gitter.im/mars-mcd-helper/community)
 
-Utilities for retrieving and processing data from the Mars Climate Database
+Utilities for retrieving and processing data from the Mars Climate Database.
+
+Currently nothing more than an interface to [www-mars.lmd.jussie.fr](http://www-mars.lmd.jussieu.fr/mcd_python).
+
+
+## Usage
+
+```python
+from mars_mcd_helper import fetch_data, read_ascii_data
+outf = fetch_data(outdir=".", ls=87.4)
+sections = read_ascii_data(outf)
+```
 
 ## Requirements
 
@@ -46,13 +57,3 @@ python3.7 -m pip install --user pipx
 pipx install --python python3.7 mars-mcd-helper
 ```
 
-## Usage
-
-Several functions are provided.  Currently there is no cli interface as I
-haven't written it yet.
-
-```python
-from mars_mcd_helper import fetch_data, read_ascii_data
-outf = fetch_data(outdir=".", ls=87.4)
-sections = read_ascii_data(outf)
-```
