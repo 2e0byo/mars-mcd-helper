@@ -1,6 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 from devtools import debug
+from logging import getLogger, INFO, DEBUG
+
+logger = getLogger(__name__)
 
 """
 http://www-mars.lmd.jussieu.fr/mcd_python/cgi-bin/mcdcgi.py
@@ -85,20 +88,24 @@ base_params = {
 }
 
 
-url = "http://www-mars.lmd.jussieu.fr/mcd_python/cgi-bin/mcdcgi.py"
+urlbase = "http://www-mars.lmd.jussieu.fr/mcd_python/"
+url = urlbase + "cgi-bin/mcdcgi.py"
 
 
 def fetch_data(**params):
     p = base_params.copy()
     p.update(params)
-    debug(p)
+    logger.info(f"Fetching page")
     r = requests.get(url, params=p)
     if "Ooops!" in r.text:
-        debug(r.url)
         raise Exception(f"Failed to download, server said {r.text}")
-
-    debug(r.text)
+    soup = BeautifulSoup(r.text, features="html.parser")
+    data_url = urlbase + soup.body.a["href"].replace("../", "")
+    logger.info(f"Fetching ascii data from {data_url}")
+    r = requests.get(data_url)
+    return r.text
 
 
 if __name__ == "__main__":
+    logger.setLevel(DEBUG)
     fetch_data()
