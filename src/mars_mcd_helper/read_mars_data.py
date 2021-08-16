@@ -95,9 +95,3 @@ def read_ascii_data(dataf):
             header["data"] = body
             sections[header["variable"]] = header
     return sections
-
-
-if __name__ == "__main__":
-    inf = Path("data.txt")
-    d = read_ascii_data(inf)
-    print(d.keys())
