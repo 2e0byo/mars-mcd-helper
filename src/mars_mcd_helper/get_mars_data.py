@@ -68,7 +68,9 @@ def fetch_data(outdir=".", **params):
     data_url = urlbase + soup.body.a["href"].replace("../", "")
     logger.info(f"Fetching ascii data from {data_url}")
     r = requests.get(data_url)
-    fn = Path(outdir) / generate_fn(**params)
+    if isinstance(outdir, str):
+        outdir = Path(outdir).expanduser().resolve()
+    fn = outdir / generate_fn(**params)
     with fn.open("w") as f:
         f.write(r.text)
     return fn
