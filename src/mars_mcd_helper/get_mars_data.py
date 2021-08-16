@@ -1,9 +1,10 @@
 """Get data from the MCD by scraping the cgi interface."""
-import requests
-from bs4 import BeautifulSoup
 from logging import getLogger
 from pathlib import Path
 from typing import Union
+
+import requests
+from bs4 import BeautifulSoup
 
 logger = getLogger(__name__)
 

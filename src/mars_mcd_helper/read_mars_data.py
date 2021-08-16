@@ -1,10 +1,11 @@
 """Functions to parse data in the rather bespoke format used by the MCD."""
+import re
+from collections import namedtuple
+from datetime import datetime
 from pathlib import Path
 from typing import List, Union
-from datetime import datetime
-from collections import namedtuple
+
 import numpy as np
-import re
 
 
 def parse_number(num: str) -> Union[float, int, None]:
@@ -67,10 +68,10 @@ def parse_header(lines: List[str]) -> dict:
     return data
 
 
-DataTable = namedtuple("DataTable", ["data", "xlabels", "ylabels"])
+_DataTable = namedtuple("_DataTable", ["data", "xlabels", "ylabels"])
 
 
-def parse_body(body: List[str]) -> "DataTable":
+def parse_body(body: List[str]) -> "_DataTable":
     """
     Parse body of data from the MCD.
 
@@ -78,7 +79,7 @@ def parse_body(body: List[str]) -> "DataTable":
         body (List[str]): lines to parse.
 
     Returns:
-        (DataTable): The parsed data.
+        (_DataTable): The parsed data.
     """
     # here we use the map (/reduce, but here we don't reduce) paradigm
     # to show how sometimes functional programming is a *lot* simpler
@@ -99,7 +100,7 @@ def parse_body(body: List[str]) -> "DataTable":
     ylabels = map(parse_number, ylabels)
     data = map(lambda row: row.split("||")[1].strip().split(" "), body)
     data = np.array(list(data), dtype=float)
-    return DataTable(data, list(xlabels), list(ylabels))
+    return _DataTable(np.rot90(data), list(xlabels), list(ylabels))
 
 
 def read_ascii_data(dataf: Path) -> dict:

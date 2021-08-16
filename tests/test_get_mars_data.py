@@ -1,5 +1,5 @@
 """Tests for getting data."""
-from mars_mcd_helper.get_mars_data import generate_fn, fetch_data
+from mars_mcd_helper.get_mars_data import fetch_data, generate_fn
 
 
 def test_generate_fn():

@@ -1,10 +1,11 @@
 """Tests for reading data from MCD."""
-import pytest
-import numpy as np
-
-from mars_mcd_helper.read_mars_data import parse_header, parse_body, parse_number, read_ascii_data
 from datetime import datetime
 from pathlib import Path
+
+import numpy as np
+import pytest
+
+from mars_mcd_helper.read_mars_data import parse_body, parse_header, parse_number, read_ascii_data
 
 cases = [["12", 12], ["12.0008", 12.0008], ["----", None], ["1e78", 1e78]]
 
@@ -135,7 +136,7 @@ def test_parse_body():
     assert len(resp.xlabels) == len(xlabels)
     assert resp.xlabels == pytest.approx(xlabels)
     assert resp.ylabels == [-180]
-    assert (resp.data == data).all()
+    assert (resp.data == np.rot90(data)).all()
 
 
 def test_parse_header():
@@ -173,4 +174,4 @@ def test_parse_file():
         "Pressure (Pa)",
     ]
     for _, v in sections.items():
-        assert len(v["data"].data) == 64
+        assert len(v["data"].data) == 48
