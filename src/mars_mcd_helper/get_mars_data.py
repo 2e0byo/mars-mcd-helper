@@ -71,4 +71,4 @@ def fetch_data(outdir=".", **params):
     fn = Path(outdir) / generate_fn(**params)
     with fn.open("w") as f:
         f.write(r.text)
-    return f
+    return fn
