@@ -92,6 +92,11 @@ urlbase = "http://www-mars.lmd.jussieu.fr/mcd_python/"
 url = urlbase + "cgi-bin/mcdcgi.py"
 
 
+def generate_fn(**params):
+    fn = "-".join(x for _, x in params.items() if x)
+    return f"marsdata_{fn}.txt"
+
+
 def fetch_data(**params):
     p = base_params.copy()
     p.update(params)
