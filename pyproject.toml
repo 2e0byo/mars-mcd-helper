@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "mars-mcd-helper"
-version = "0.1.0"
+version = "v0.0.1"
 description = "Utilities for retrieving and processing data from the Mars Climate Database"
 authors = ["John Morris <john.morris@durham.ac.uk>"]
 license = "MIT License"
