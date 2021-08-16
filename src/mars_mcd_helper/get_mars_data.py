@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from devtools import debug
 from logging import getLogger, INFO, DEBUG
 from pathlib import Path
 
