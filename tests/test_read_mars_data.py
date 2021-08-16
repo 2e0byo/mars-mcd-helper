@@ -17,7 +17,7 @@ def test_parse_number(numstr, res):
         numstr (str): str to parse.
         res: desired result.
     """
-    assert parse_number(x) == y
+    assert parse_number(numstr) == res
 
 
 def test_parse_body():
