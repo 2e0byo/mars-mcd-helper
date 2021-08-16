@@ -98,7 +98,7 @@ def parse_body(body: List[str]) -> "DataTable":
     ylabels = map(lambda row: row.split("||")[0].strip(), body)
     ylabels = map(parse_number, ylabels)
     data = map(lambda row: row.split("||")[1].strip().split(" "), body)
-    data = np.array(list(data))
+    data = np.array(list(data), dtype=float)
     return DataTable(data, list(xlabels), list(ylabels))
 
 

@@ -130,7 +130,7 @@ def test_parse_body():
                 "1.91096e-02",
             ]
         ],
-        dtype="<U11",
+        dtype="float",
     )
     assert len(resp.xlabels) == len(xlabels)
     assert resp.xlabels == pytest.approx(xlabels)
