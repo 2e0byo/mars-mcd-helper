@@ -51,16 +51,16 @@ base_params = {
     "datekeyhtml": 1,
     "ls": 85.3,
     "localtime": 0.0,
-    "year": 2021,
-    "month": 8,
-    "day": 14,
-    "hours": 14,
-    "minutes": 26,
-    "seconds": 12,
-    "julian": "2459441.101527778",
-    "martianyear": 36,
-    "martianmonth": 3,
-    "sol": 183,
+    # "year": 2021,
+    # "month": 8,
+    # "day": 14,
+    # "hours": 14,
+    # "minutes": 26,
+    # "seconds": 12,
+    # "julian": "2459441.101527778",
+    # "martianyear": 36,
+    # "martianmonth": 3,
+    # "sol": 183,
     "latitude": "all",
     "longitude": "all",
     "altitude": 10.0,
@@ -108,4 +108,4 @@ def fetch_data(**params):
 
 if __name__ == "__main__":
     logger.setLevel(DEBUG)
-    fetch_data()
+    print(fetch_data())
