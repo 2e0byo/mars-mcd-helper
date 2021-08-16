@@ -7,7 +7,12 @@
 
 Utilities for retrieving and processing data from the Mars Climate Database.
 
-Currently nothing more than an interface to [www-mars.lmd.jussie.fr](http://www-mars.lmd.jussieu.fr/mcd_python).
+Currently nothing more than an interface to
+[www-mars.lmd.jussie.fr](http://www-mars.lmd.jussieu.fr/mcd_python).  Note that
+this tool is not in any way affiliated with that excellent project.  It is
+simply a requests-based scraper.  Overuse or repetitive fetching could result in
+ratelimiting or banning from `jussieu.fr`.
+
 
 
 ## Usage
