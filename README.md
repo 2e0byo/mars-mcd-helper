@@ -35,6 +35,7 @@ pyenv global system 3.7.12
 
 With `pip`:
 ```bash
+python -m pip install mars-mcd-helper # or
 python3.7 -m pip install mars-mcd-helper
 ```
 
@@ -43,4 +44,15 @@ With [`pipx`](https://github.com/pipxproject/pipx):
 python3.7 -m pip install --user pipx
 
 pipx install --python python3.7 mars-mcd-helper
+```
+
+## Usage
+
+Several functions are provided.  Currently there is no cli interface as I
+haven't written it yet.
+
+```python
+from mars_mcd_helper import fetch_data, read_ascii_data
+outf = fetch_data(ls=87.4)
+sections = read_ascii_data(outf)
 ```
