@@ -72,8 +72,3 @@ def fetch_data(outdir=".", **params):
     with fn.open("w") as f:
         f.write(r.text)
     return f
-
-
-if __name__ == "__main__":
-    logger.setLevel(DEBUG)
-    print(fetch_data(ls=87))
