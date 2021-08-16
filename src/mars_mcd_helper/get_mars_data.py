@@ -6,47 +6,6 @@ from pathlib import Path
 
 logger = getLogger(__name__)
 
-"""
-http://www-mars.lmd.jussieu.fr/mcd_python/cgi-bin/mcdcgi.py
-?datekeyhtml=1
-&ls=85.3
-&localtime=0.
-&year=2021
-&month=8
-&day=14
-&hours=14
-&minutes=26
-&seconds=12
-&julian=2459441.101527778
-&martianyear=36
-&martianmonth=3
-&sol=183
-&latitude=all
-&longitude=all
-&altitude=10.
-&zkey=3
-&isfixedlt=off
-&dust=1
-&hrkey=1
-&zonmean=off
-&var1=mtot
-&var2=t
-&var3=p
-&var4=none
-&dpi=80
-&islog=off
-&colorm=Blues
-&minval=
-&maxval=
-&proj=cyl
-&plat=
-&plon=
-&trans=
-&iswind=off
-&latpoint=
-&lonpoint=
-"""
-
 
 base_params = {
     "datekeyhtml": 1,
@@ -94,7 +53,7 @@ url = urlbase + "cgi-bin/mcdcgi.py"
 
 
 def generate_fn(**params):
-    fn = "-".join(x for _, x in params.items() if x)
+    fn = "-".join(str(x) for _, x in params.items() if x)
     return f"marsdata_{fn}.txt"
 
 
