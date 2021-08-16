@@ -324,6 +324,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#requirements" class="md-nav__link">
     Requirements
   </a>
@@ -333,13 +340,6 @@
         <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
   </a>
   
 </li>
@@ -431,6 +431,30 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/get_mars_data/" class="md-nav__link">
+        get_mars_data
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/read_mars_data/" class="md-nav__link">
+        read_mars_data
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -517,6 +541,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#requirements" class="md-nav__link">
     Requirements
   </a>
@@ -526,13 +557,6 @@
         <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
   </a>
   
 </li>
@@ -559,7 +583,13 @@
 <a href="https://2e0byo.github.io/mars-mcd-helper/"><img alt="documentation" src="https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat" /></a>
 <a href="https://pypi.org/project/mars-mcd-helper/"><img alt="pypi version" src="https://img.shields.io/pypi/v/mars-mcd-helper.svg" /></a>
 <a href="https://gitter.im/mars-mcd-helper/community"><img alt="gitter" src="https://badges.gitter.im/join%20chat.svg" /></a></p>
-<p>Utilities for retrieving and processing data from the Mars Climate Database</p>
+<p>Utilities for retrieving and processing data from the Mars Climate Database.</p>
+<p>Currently nothing more than an interface to <a href="http://www-mars.lmd.jussieu.fr/mcd_python">www-mars.lmd.jussie.fr</a>.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">¤</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">mars_mcd_helper</span> <span class="kn">import</span> <span class="n">fetch_data</span><span class="p">,</span> <span class="n">read_ascii_data</span>
+<span class="n">outf</span> <span class="o">=</span> <span class="n">fetch_data</span><span class="p">(</span><span class="n">outdir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="mf">87.4</span><span class="p">)</span>
+<span class="n">sections</span> <span class="o">=</span> <span class="n">read_ascii_data</span><span class="p">(</span><span class="n">outf</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">¤</a></h2>
 <p>mars-MCD-helper requires Python 3.7 or above.</p>
 <details>
@@ -591,13 +621,6 @@ python3.7 -m pip install mars-mcd-helper
 
 pipx install --python python3.7 mars-mcd-helper
 </code></pre></div></p>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">¤</a></h2>
-<p>Several functions are provided.  Currently there is no cli interface as I
-haven't written it yet.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">mars_mcd_helper</span> <span class="kn">import</span> <span class="n">fetch_data</span><span class="p">,</span> <span class="n">read_ascii_data</span>
-<span class="n">outf</span> <span class="o">=</span> <span class="n">fetch_data</span><span class="p">(</span><span class="n">outdir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="mf">87.4</span><span class="p">)</span>
-<span class="n">sections</span> <span class="o">=</span> <span class="n">read_ascii_data</span><span class="p">(</span><span class="n">outf</span><span class="p">)</span>
-</code></pre></div>
                 
               
               

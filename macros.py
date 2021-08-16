@@ -32,7 +32,7 @@ def get_credits_data() -> dict:
 
     packages = {}
     for pkg in search_packages_info(dependencies):
-        pkg = {_: pkg[_] for _ in ("name", "home-page")}
+        pkg = {_: getattr(pkg, _) for _ in ("name", "homepage")}
         packages[pkg["name"].lower()] = pkg
 
     # all packages might not be credited,

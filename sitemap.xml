@@ -31,6 +31,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://2e0byo.github.io/mars-mcd-helper/reference/get_mars_data/</loc>
+         <lastmod>2021-08-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://2e0byo.github.io/mars-mcd-helper/reference/read_mars_data/</loc>
+         <lastmod>2021-08-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://2e0byo.github.io/mars-mcd-helper/coverage/</loc>
          <lastmod>2021-08-16</lastmod>
          <changefreq>daily</changefreq>

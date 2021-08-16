@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#macro-rendering-error" class="md-skip">
+        <a href="#credits" class="md-skip">
           Skip to content
         </a>
       
@@ -325,9 +325,45 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Credits
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Credits
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#direct-dependencies" class="md-nav__link">
+    Direct dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indirect-dependencies" class="md-nav__link">
+    Indirect dependencies
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -383,6 +419,30 @@
     <li class="md-nav__item">
       <a href="../reference/cli/" class="md-nav__link">
         cli.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/get_mars_data/" class="md-nav__link">
+        get_mars_data
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/read_mars_data/" class="md-nav__link">
+        read_mars_data
       </a>
     </li>
   
@@ -467,6 +527,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#direct-dependencies" class="md-nav__link">
+    Direct dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indirect-dependencies" class="md-nav__link">
+    Indirect dependencies
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -482,28 +564,119 @@
                   </a>
                 
                 
-                <h1 id="macro-rendering-error"><em>Macro Rendering Error</em><a class="headerlink" href="#macro-rendering-error" title="Permanent link">¤</a></h1>
-<p><strong>TypeError</strong>: tuple indices must be integers or slices, not str</p>
-<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
-  File &quot;/home/john/.cache/pypoetry/virtualenvs/mars-mcd-helper-1cwvvAFm-py3.9/lib/python3.9/site-packages/mkdocs_macros/plugin.py&quot;, line 434, in render
-    return md_template.render(**page_variables)
-  File &quot;/home/john/.cache/pypoetry/virtualenvs/mars-mcd-helper-1cwvvAFm-py3.9/lib/python3.9/site-packages/jinja2/environment.py&quot;, line 1090, in render
-    self.environment.handle_exception()
-  File &quot;/home/john/.cache/pypoetry/virtualenvs/mars-mcd-helper-1cwvvAFm-py3.9/lib/python3.9/site-packages/jinja2/environment.py&quot;, line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File &quot;/home/john/.cache/pypoetry/virtualenvs/mars-mcd-helper-1cwvvAFm-py3.9/lib/python3.9/site-packages/jinja2/_compat.py&quot;, line 28, in reraise
-    raise value.with_traceback(tb)
-  File &quot;&lt;template&gt;&quot;, line 1, in top-level template code
-  File &quot;/home/john/code/mars/docs/macros.py&quot;, line 81, in credits
-    return get_credits()
-  File &quot;/home/john/code/mars/docs/macros.py&quot;, line 63, in get_credits
-    template_data = get_credits_data()
-  File &quot;/home/john/code/mars/docs/macros.py&quot;, line 35, in get_credits_data
-    pkg = {_: pkg[_] for _ in (&quot;name&quot;, &quot;home-page&quot;)}
-  File &quot;/home/john/code/mars/docs/macros.py&quot;, line 35, in &lt;dictcomp&gt;
-    pkg = {_: pkg[_] for _ in (&quot;name&quot;, &quot;home-page&quot;)}
-TypeError: tuple indices must be integers or slices, not str
-</code></pre></div>
+                <!-- Template repository: https://github.com/pawamoy/jinja-templates
+     Template path: credits.md
+-->
+
+<h1 id="credits">Credits<a class="headerlink" href="#credits" title="Permanent link">¤</a></h1>
+<p>These projects were used to build <code>mars-mcd-helper</code>. <strong>Thank you!</strong></p>
+<p><a href="https://www.python.org/"><code>python</code></a> |
+<a href="https://poetry.eustace.io/"><code>poetry</code></a> |
+<a href="https://github.com/pawamoy/copier-poetry"><code>copier-poetry</code></a></p>
+<h3 id="direct-dependencies">Direct dependencies<a class="headerlink" href="#direct-dependencies" title="Permanent link">¤</a></h3>
+<p><a href=""><code>autoflake</code></a> |
+<a href=""><code>beautifulsoup4</code></a> |
+<a href=""><code>black</code></a> |
+<a href=""><code>darglint</code></a> |
+<a href=""><code>devtools</code></a> |
+<a href=""><code>duty</code></a> |
+<a href=""><code>flake8-bandit</code></a> |
+<a href=""><code>flake8-black</code></a> |
+<a href=""><code>flake8-bugbear</code></a> |
+<a href=""><code>flake8-builtins</code></a> |
+<a href=""><code>flake8-comprehensions</code></a> |
+<a href=""><code>flake8-docstrings</code></a> |
+<a href=""><code>flake8-pytest-style</code></a> |
+<a href=""><code>flake8-string-format</code></a> |
+<a href=""><code>flake8-tidy-imports</code></a> |
+<a href=""><code>flake8-variables-names</code></a> |
+<a href=""><code>git-changelog</code></a> |
+<a href=""><code>httpx</code></a> |
+<a href=""><code>isort</code></a> |
+<a href=""><code>jinja2-cli</code></a> |
+<a href=""><code>mkdocs</code></a> |
+<a href=""><code>mkdocs-coverage</code></a> |
+<a href=""><code>mkdocs-macros-plugin</code></a> |
+<a href=""><code>mkdocs-material</code></a> |
+<a href=""><code>mkdocstrings</code></a> |
+<a href=""><code>mypy</code></a> |
+<a href=""><code>numpy</code></a> |
+<a href=""><code>pep8-naming</code></a> |
+<a href=""><code>pytest</code></a> |
+<a href=""><code>pytest-cov</code></a> |
+<a href=""><code>pytest-randomly</code></a> |
+<a href=""><code>pytest-sugar</code></a> |
+<a href=""><code>pytest-xdist</code></a> |
+<a href=""><code>requests</code></a> |
+<a href=""><code>toml</code></a> |
+<a href=""><code>wps-light</code></a></p>
+<h3 id="indirect-dependencies">Indirect dependencies<a class="headerlink" href="#indirect-dependencies" title="Permanent link">¤</a></h3>
+<p><a href=""><code>ansimarkup</code></a> |
+<a href=""><code>appdirs</code></a> |
+<a href=""><code>astor</code></a> |
+<a href=""><code>astunparse</code></a> |
+<a href=""><code>atomicwrites</code></a> |
+<a href=""><code>attrs</code></a> |
+<a href=""><code>bandit</code></a> |
+<a href=""><code>cached-property</code></a> |
+<a href=""><code>certifi</code></a> |
+<a href=""><code>charset-normalizer</code></a> |
+<a href=""><code>click</code></a> |
+<a href=""><code>colorama</code></a> |
+<a href=""><code>coverage</code></a> |
+<a href=""><code>execnet</code></a> |
+<a href=""><code>failprint</code></a> |
+<a href=""><code>flake8</code></a> |
+<a href=""><code>flake8-plugin-utils</code></a> |
+<a href=""><code>flake8-polyfill</code></a> |
+<a href=""><code>ghp-import</code></a> |
+<a href=""><code>gitdb</code></a> |
+<a href=""><code>GitPython</code></a> |
+<a href=""><code>h11</code></a> |
+<a href=""><code>httpcore</code></a> |
+<a href=""><code>idna</code></a> |
+<a href=""><code>importlib-metadata</code></a> |
+<a href=""><code>iniconfig</code></a> |
+<a href=""><code>Jinja2</code></a> |
+<a href=""><code>Markdown</code></a> |
+<a href=""><code>MarkupSafe</code></a> |
+<a href=""><code>mccabe</code></a> |
+<a href=""><code>mergedeep</code></a> |
+<a href=""><code>mkdocs-autorefs</code></a> |
+<a href=""><code>mkdocs-material-extensions</code></a> |
+<a href=""><code>mypy-extensions</code></a> |
+<a href=""><code>packaging</code></a> |
+<a href=""><code>pathspec</code></a> |
+<a href=""><code>pbr</code></a> |
+<a href=""><code>pluggy</code></a> |
+<a href=""><code>ptyprocess</code></a> |
+<a href=""><code>py</code></a> |
+<a href=""><code>pycodestyle</code></a> |
+<a href=""><code>pydocstyle</code></a> |
+<a href=""><code>pyflakes</code></a> |
+<a href=""><code>Pygments</code></a> |
+<a href=""><code>pymdown-extensions</code></a> |
+<a href=""><code>pyparsing</code></a> |
+<a href=""><code>pytest-forked</code></a> |
+<a href=""><code>python-dateutil</code></a> |
+<a href=""><code>pytkdocs</code></a> |
+<a href=""><code>PyYAML</code></a> |
+<a href=""><code>pyyaml-env-tag</code></a> |
+<a href=""><code>regex</code></a> |
+<a href=""><code>rfc3986</code></a> |
+<a href=""><code>six</code></a> |
+<a href=""><code>smmap</code></a> |
+<a href=""><code>sniffio</code></a> |
+<a href=""><code>snowballstemmer</code></a> |
+<a href=""><code>soupsieve</code></a> |
+<a href=""><code>stevedore</code></a> |
+<a href=""><code>termcolor</code></a> |
+<a href=""><code>typed-ast</code></a> |
+<a href=""><code>typing-extensions</code></a> |
+<a href=""><code>urllib3</code></a> |
+<a href=""><code>watchdog</code></a> |
+<a href=""><code>zipp</code></a></p>
+<p><strong><a href="http://pawamoy.github.io/credits/">More credits from the author</a></strong></p>
                 
               
               

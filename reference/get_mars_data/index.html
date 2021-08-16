@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://2e0byo.github.io/mars-mcd-helper/reference/cli/">
+        <link rel="canonical" href="https://2e0byo.github.io/mars-mcd-helper/reference/get_mars_data/">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-6.2.8">
     
     
       
-        <title>cli.py - mars-MCD-helper</title>
+        <title>get_mars_data - mars-MCD-helper</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mars_mcd_helper.cli" class="md-skip">
+        <a href="#mars_mcd_helper.get_mars_data" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              cli.py
+              get_mars_data
             
           </span>
         </div>
@@ -192,7 +192,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../cli/" class="md-tabs__link md-tabs__link--active">
         Code Reference
       </a>
     </li>
@@ -370,6 +370,18 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        cli.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -379,12 +391,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          cli.py
+          get_mars_data
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        cli.py
+        get_mars_data
       </a>
       
         
@@ -399,22 +411,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mars_mcd_helper.cli" class="md-nav__link">
-    mars_mcd_helper.cli
+  <a href="#mars_mcd_helper.get_mars_data" class="md-nav__link">
+    mars_mcd_helper.get_mars_data
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mars_mcd_helper.cli.get_parser" class="md-nav__link">
-    get_parser()
+  <a href="#mars_mcd_helper.get_mars_data.FetchingError" class="md-nav__link">
+    FetchingError
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mars_mcd_helper.cli.main" class="md-nav__link">
-    main()
+  <a href="#mars_mcd_helper.get_mars_data.fetch_data" class="md-nav__link">
+    fetch_data()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mars_mcd_helper.get_mars_data.generate_fn" class="md-nav__link">
+    generate_fn()
   </a>
   
 </li>
@@ -423,18 +442,6 @@
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../get_mars_data/" class="md-nav__link">
-        get_mars_data
-      </a>
     </li>
   
 
@@ -535,22 +542,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mars_mcd_helper.cli" class="md-nav__link">
-    mars_mcd_helper.cli
+  <a href="#mars_mcd_helper.get_mars_data" class="md-nav__link">
+    mars_mcd_helper.get_mars_data
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mars_mcd_helper.cli.get_parser" class="md-nav__link">
-    get_parser()
+  <a href="#mars_mcd_helper.get_mars_data.FetchingError" class="md-nav__link">
+    FetchingError
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mars_mcd_helper.cli.main" class="md-nav__link">
-    main()
+  <a href="#mars_mcd_helper.get_mars_data.fetch_data" class="md-nav__link">
+    fetch_data()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mars_mcd_helper.get_mars_data.generate_fn" class="md-nav__link">
+    generate_fn()
   </a>
   
 </li>
@@ -567,19 +581,19 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/2e0byo/mars-mcd-helper/edit/master/docs/reference/cli.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/2e0byo/mars-mcd-helper/edit/master/docs/reference/get_mars_data.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>cli.py</h1>
+                  <h1>get_mars_data</h1>
                 
                 <div class="doc doc-object doc-module">
 
-<a id="mars_mcd_helper.cli"></a>
+<a id="mars_mcd_helper.get_mars_data"></a>
     <div class="doc doc-contents first">
 
-      <p>Module that contains the command line application.</p>
+      <p>Get data from the MCD by scraping the cgi interface.</p>
 
 
 
@@ -592,67 +606,46 @@
 
 
 
-  <div class="doc doc-object doc-function">
 
 
 
-<h2 id="mars_mcd_helper.cli.get_parser" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_parser</span><span class="p">()</span></code>
+  <div class="doc doc-object doc-class">
 
 
-<a href="#mars_mcd_helper.cli.get_parser" class="headerlink" title="Permanent link">¤</a></h2>
+
+<h2 id="mars_mcd_helper.get_mars_data.FetchingError" class="doc doc-heading">
+        <code>FetchingError</code>
+
+
+
+<a href="#mars_mcd_helper.get_mars_data.FetchingError" class="headerlink" title="Permanent link">¤</a></h2>
 
     <div class="doc doc-contents ">
 
-      <p>Return the CLI argument parser.</p>
+      <p>Error fetching resource.</p>
 
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>ArgumentParser</code></td>
-      <td><p>An argparse parser.</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>mars_mcd_helper/cli.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_parser</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return the CLI argument parser.</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        An argparse parser.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s2">&quot;mars-mcd-helper&quot;</span><span class="p">)</span>
-</code></pre></div>
-        </details>
+
     </div>
 
   </div>
 
 
 
+
   <div class="doc doc-object doc-function">
 
 
 
-<h2 id="mars_mcd_helper.cli.main" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<h2 id="mars_mcd_helper.get_mars_data.fetch_data" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">fetch_data</span><span class="p">(</span><span class="n">outdir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span></code>
 
 
-<a href="#mars_mcd_helper.cli.main" class="headerlink" title="Permanent link">¤</a></h2>
+<a href="#mars_mcd_helper.get_mars_data.fetch_data" class="headerlink" title="Permanent link">¤</a></h2>
 
     <div class="doc doc-contents ">
 
-      <p>Run the main program.</p>
-<p>This function is executed when you type <code>mars-mcd-helper</code> or <code>python -m mars_mcd_helper</code>.</p>
+      <p>Fetch data from the MCD and save in outdir.</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -666,10 +659,31 @@
   </thead>
   <tbody>
       <tr>
-        <td><code>args</code></td>
-        <td><code>Optional[List[str]]</code></td>
-        <td><p>Arguments passed from the command line.</p></td>
-        <td><code>None</code></td>
+        <td><code>outdir</code></td>
+        <td><code>Union[pathlib.Path, str]</code></td>
+        <td><p>dir to save in (Default value = ".")</p></td>
+        <td><code>&#39;.&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>**params</code></td>
+        <td><code></code></td>
+        <td><p>Parameters to override.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>FetchingError</code></td>
+        <td><p>Failed to fetch requested data.</p></td>
       </tr>
   </tbody>
 </table>
@@ -683,29 +697,111 @@
   </thead>
   <tbody>
     <tr>
-      <td><code>int</code></td>
-      <td><p>An exit code.</p></td>
+      <td><code>(Path)</code></td>
+      <td><p>output file.</p></td>
     </tr>
   </tbody>
 </table>
         <details class="quote">
-          <summary>Source code in <code>mars_mcd_helper/cli.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Run the main program.</span>
+          <summary>Source code in <code>mars_mcd_helper/get_mars_data.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fetch_data</span><span class="p">(</span><span class="n">outdir</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fetch data from the MCD and save in outdir.</span>
 
-<span class="sd">    This function is executed when you type `mars-mcd-helper` or `python -m mars_mcd_helper`.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        outdir (Union[Path, str]): dir to save in (Default value = &quot;.&quot;)</span>
+<span class="sd">        **params: Parameters to override.</span>
 
-<span class="sd">    Arguments:</span>
-<span class="sd">        args: Arguments passed from the command line.</span>
+<span class="sd">    Raises:</span>
+<span class="sd">        FetchingError: Failed to fetch requested data.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        An exit code.</span>
+<span class="sd">        (Path): output file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">get_parser</span><span class="p">()</span>
-    <span class="n">opts</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>  <span class="c1"># noqa: WPS421 (side-effect in main is fine)</span>
-    <span class="k">return</span> <span class="mi">0</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">base_params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Fetching page&quot;</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;Ooops!&quot;</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FetchingError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to download, server said </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+    <span class="n">data_url</span> <span class="o">=</span> <span class="n">urlbase</span> <span class="o">+</span> <span class="n">soup</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;href&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fetching ascii data from </span><span class="si">{</span><span class="n">data_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">outdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">outdir</span> <span class="o">/</span> <span class="n">generate_fn</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">fn</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fn</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mars_mcd_helper.get_mars_data.generate_fn" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">generate_fn</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span></code>
+
+
+<a href="#mars_mcd_helper.get_mars_data.generate_fn" class="headerlink" title="Permanent link">¤</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate a unique filename from given params.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>**params</code></td>
+        <td><code></code></td>
+        <td><p>params to consider.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>(str): Fn from params.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>mars_mcd_helper/get_mars_data.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_fn</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Generate a unique filename from given params.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        **params: params to consider.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (str): Fn from params.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;marsdata_</span><span class="si">{</span><span class="n">fn</span><span class="si">}</span><span class="s2">.txt&quot;</span>
 </code></pre></div>
         </details>
     </div>
@@ -740,7 +836,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../../license/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../cli/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -749,19 +845,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                License
+                cli.py
               </div>
             </div>
           </a>
         
         
-          <a href="../get_mars_data/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../read_mars_data/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                get_mars_data
+                read_mars_data
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
