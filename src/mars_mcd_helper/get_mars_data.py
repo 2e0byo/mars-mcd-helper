@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from devtools import debug
 from logging import getLogger, INFO, DEBUG
+from pathlib import Path
 
 logger = getLogger(__name__)
 
@@ -97,7 +98,7 @@ def generate_fn(**params):
     return f"marsdata_{fn}.txt"
 
 
-def fetch_data(**params):
+def fetch_data(outdir=".", **params):
     p = base_params.copy()
     p.update(params)
     logger.info(f"Fetching page")
@@ -108,9 +109,12 @@ def fetch_data(**params):
     data_url = urlbase + soup.body.a["href"].replace("../", "")
     logger.info(f"Fetching ascii data from {data_url}")
     r = requests.get(data_url)
-    return r.text
+    fn = Path(outdir) / generate_fn(**params)
+    with fn.open("w") as f:
+        f.write(r.text)
+    return f
 
 
 if __name__ == "__main__":
     logger.setLevel(DEBUG)
-    print(fetch_data())
+    print(fetch_data(ls=87))
