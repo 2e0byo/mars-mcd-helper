@@ -1,5 +1,4 @@
-import csv
-import pytest
+"""Functions to parse data in the rather bespoke format used by the MCD."""
 from pathlib import Path
 from typing import List, Union
 from datetime import datetime
@@ -9,8 +8,19 @@ import re
 
 
 def parse_number(num: str) -> Union[float, int]:
+    """
+    Parse a number into the best representation.
+
+    Args:
+      num: str: number to parse.
+
+    Returns:
+      parsed number.
+    """
     if num == "----":
         return None
+    if "." in num:
+        return float(num)
     try:
         return int(num)
     except ValueError:
@@ -18,7 +28,14 @@ def parse_number(num: str) -> Union[float, int]:
 
 
 def parse_header(lines: List[str]) -> dict:
-    """Parse header."""
+    """Parse header.
+
+    Args:
+      lines: List[str]: lines to parse.
+
+    Returns:
+      Dict representing extracted data.
+    """
     # written to be readable by people beginning python, so rather verbose.
     data = {}
     match = re.search(r"MCD_(.+) with (.+).", lines[0])
@@ -53,6 +70,15 @@ DataTable = namedtuple("DataTable", ["data", "xlabels", "ylabels"])
 
 
 def parse_body(body: List[str]) -> "DataTable":
+    """
+    Parse body of data from the MCD.
+
+    Args:
+      body: List[str]: lines to parse.
+
+    Returns:
+      DataTable() representing the parsed data.
+    """
     # here we use the map (/reduce, but here we don't reduce) paradigm to show how sometimes functional programming is a *lot* simpler than writing the loops out by hand.
     # map applies a function (here an anonymous function decared with lambda) over an iterable
     # numpy has it's own map/reduce fns which are implemented in C and can be a lot faster than python's.
@@ -69,7 +95,17 @@ def parse_body(body: List[str]) -> "DataTable":
     return data
 
 
-def read_ascii_data(dataf):
+def read_ascii_data(dataf: Path) -> dict:
+    """
+    Parse a file downloaded from the MCD.
+
+    Args:
+      dataf: Path: The file to pass.
+
+    Returns:
+      A dict representing the data.
+
+    """
     sections = {}
     with dataf.open() as f:
         row = f.readline()

@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from logging import getLogger, INFO, DEBUG
 from pathlib import Path
+from typing import Union
 
 logger = getLogger(__name__)
 
@@ -51,12 +52,29 @@ urlbase = "http://www-mars.lmd.jussieu.fr/mcd_python/"
 url = urlbase + "cgi-bin/mcdcgi.py"
 
 
-def generate_fn(**params):
+def generate_fn(**params) -> str:
+    """Generate a unique filename from given params.
+
+    Args:
+      **params: params to consider.
+
+    Returns:
+      Fn from params.
+    """
     fn = "-".join(str(x) for _, x in params.items() if x)
     return f"marsdata_{fn}.txt"
 
 
-def fetch_data(outdir=".", **params):
+def fetch_data(outdir: Union[Path, str] = ".", **params):
+    """Fetch data from the MCD and save in outdir.
+
+    Args:
+      outdir:  Union[Path, str] (Default value = ".") dir to save in
+      **params: Parameters to override.
+
+    Returns:
+      Path to output file.
+    """
     p = base_params.copy()
     p.update(params)
     logger.info(f"Fetching page")
