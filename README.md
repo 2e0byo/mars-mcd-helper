@@ -53,6 +53,6 @@ haven't written it yet.
 
 ```python
 from mars_mcd_helper import fetch_data, read_ascii_data
-outf = fetch_data(ls=87.4)
+outf = fetch_data(outdir=".", ls=87.4)
 sections = read_ascii_data(outf)
 ```
