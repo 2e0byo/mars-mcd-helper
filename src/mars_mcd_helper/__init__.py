@@ -27,6 +27,11 @@ def get_parse_data(**kwargs) -> dict:
     elif isinstance(kwargs["outdir"], str):
         kwargs["outdir"] = Path(kwargs["outdir"])
     dataf = kwargs["outdir"] / generate_fn({k: v for k, v in params if k != "outdir"})
-    if not dataf.exists():
-        dataf = fetch_data(**kwargs)
-    return read_ascii_data(dataf)
+    imgf = dataf.with_suffix("png")
+    if "fetch_img" not in kwargs:
+        kwargs["fetch_img"] = False
+    fetch_data = not dataf.exists()
+    fetch_img = kwargs["fetch_img"] and not imgf_exists
+    if any(fetch_data, fetch_img)
+        dataf, imgf = fetch_data(**kwargs)
+    return read_ascii_data(dataf), imgf if kwargs["fetch_img"] else None

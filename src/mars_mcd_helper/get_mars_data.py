@@ -11,6 +11,7 @@ saved output)."""
 from logging import getLogger
 from pathlib import Path
 from typing import Union
+from collections import namedtuple
 
 import requests
 from bs4 import BeautifulSoup
@@ -65,6 +66,7 @@ rather pass the parameter and value as keyword arguments to `fetch_data()`."""
 
 urlbase = "http://www-mars.lmd.jussieu.fr/mcd_python/"
 url = urlbase + "cgi-bin/mcdcgi.py"
+_FetchedFiles = namedtuple("_FetchedFiles", ["dataf", "imgf"])
 
 
 def generate_fn(**params) -> str:
@@ -87,12 +89,14 @@ class FetchingError(Exception):
     message, so we raise an exception and pass the error message up."""
 
 
-def fetch_data(outdir: Union[Path, str] = ".", **params):
+def fetch_data(outdir: Union[Path, str] = ".", fetch_data: bool = True, fetch_img: bool = False, **params):
     """Fetch data from the MCD and save in outdir.  Keyword arguments (other
     than `outdir`) will override the defaults in `base_params`.
 
     Args:
         outdir (Union[Path, str]): dir to save in (Default value = ".")
+        fetch_data (bool): fetch data or not (Default value = True)
+        fetch_img (bool): fetch img or not (Default value = False)
         **params: Parameters to override.
 
     Raises:
@@ -106,7 +110,7 @@ def fetch_data(outdir: Union[Path, str] = ".", **params):
     e.g.:
 
     ```python
-    >> fetch_data(ls=0.5, localtime=1)
+    >> fetch_data(ls=0.5, localtime=1).dataf
     Path("marsdata_ls_0.5-localtime_1.txt")
     ```
     For more information on any particular parameter see the web interface.
@@ -118,12 +122,25 @@ def fetch_data(outdir: Union[Path, str] = ".", **params):
     if "Ooops!" in r.text:
         raise FetchingError(f"Failed to download, server said {r.text}")
     soup = BeautifulSoup(r.text, features="html.parser")
-    data_url = urlbase + soup.body.a["href"].replace("../", "")
-    logger.info(f"Fetching ascii data from {data_url}")
-    r = requests.get(data_url)
     if isinstance(outdir, str):
         outdir = Path(outdir).expanduser().resolve()
-    fn = outdir / generate_fn(**params)
-    with fn.open("w") as f:
-        f.write(r.text)
-    return fn
+
+    dataf, imgf = None, None
+
+    if fetch_data:
+        data_url = urlbase + soup.body.a["href"].replace("../", "")
+        logger.info(f"Fetching ascii data from {data_url}")
+        r = requests.get(data_url)
+        dataf = outdir / generate_fn(**params)
+        with dataf.open("w") as f:
+            f.write(r.text)
+
+    if fetch_img:
+        img_url = urlbase + soup.bod.img["src"].replace("../", "")
+        logger.info(f"Fetching img from {img_url}")
+        r = requests.get(img_url)
+        imgf = dataf.with_suffix("png")
+        with imgf.open("rb") as f:
+            f.write(r.content)
+
+    return _FetchedFiles(dataf, imgf)

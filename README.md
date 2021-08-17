@@ -19,8 +19,9 @@ ratelimiting or banning from `jussieu.fr`.
 
 ```python
 from mars_mcd_helper import fetch_data, read_ascii_data
-outf = fetch_data(outdir=".", ls=87.4)
+outf, imgf = fetch_data(outdir=".", fetch_img=True, ls=87.4)
 sections = read_ascii_data(outf)
+print("Image to compare at", imgf)
 ```
 
 ## Requirements
