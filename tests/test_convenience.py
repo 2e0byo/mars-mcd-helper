@@ -28,12 +28,19 @@ def test_get_parse_cache_str(tmp_path, mocker):
     mocked_get.assert_not_called()
 
 
-def test_get_parse_cache_none(tmp_path, mocker):
+@pytest.fixture
+def chtmpdir(tmp_path):
+    current = os.getcwd()
+    os.chdir(tmp_path)
+    yield tmp_path
+    os.chdir(current)
+
+
+def test_get_parse_cache_none(chtmpdir, mocker):
     mocked_get = mocker.patch("requests.get")
     mocked_get.return_value.text = f"<html><body><a href='here'>link</a><img src='there'/></body></html>"
     with (tmp_path / generate_fn()).open("w") as f:
         f.write("")
-    os.chdir(tmp_path)
     data, imgf = get_parse_data()
     assert not imgf
     assert not data
