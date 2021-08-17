@@ -64,7 +64,7 @@ def parse_header(lines: List[str]) -> dict:
     assert "-" * 6 in lines[6]
     match = re.search("Retrieved on: (.+)", lines[7])
     if match:
-        data["retrieval_date"] = datetime.fromisoformat(match.group(1))
+        data["retrieval_date"] = datetime.fromisoformat(match.group(1))  # type: ignore
     return data
 
 
@@ -91,15 +91,14 @@ def parse_body(body: List[str]) -> "_DataTable":
     # numpy has it's own map/reduce fns which are implemented in C
     # and can be a lot faster than python's.
 
-    body = map(lambda row: " ".join(row.strip().split()), body)
-    body = list(body)
+    body = list(map(lambda row: " ".join(row.strip().split()), body))
     xlabels = body[0].split("||")[1].strip().split(" ")
     body = body[2:]
-    xlabels = map(parse_number, xlabels)
-    ylabels = map(lambda row: row.split("||")[0].strip(), body)
-    ylabels = map(parse_number, ylabels)
-    data = map(lambda row: row.split("||")[1].strip().split(" "), body)
-    data = np.array(list(data), dtype=float)
+    xlabels = map(parse_number, xlabels)  # type: ignore
+    ylabels_map = map(lambda row: row.split("||")[0].strip(), body)
+    ylabels = map(parse_number, ylabels_map)
+    data_map = map(lambda row: row.split("||")[1].strip().split(" "), body)
+    data = np.array(list(data_map), dtype=float)
     return _DataTable(np.rot90(data), list(xlabels), list(ylabels))
 
 
@@ -123,19 +122,19 @@ def read_ascii_data(dataf: Path) -> dict:
             while "#" * 8 not in row:  # start header section
                 row = f.readline()
             row = f.readline()  # skip ###### row
-            header = []
+            header_rows = []
             while "#" * 8 not in row:
-                header.append(row)
+                header_rows.append(row)
                 row = f.readline()
-            header = parse_header(header)
+            header = parse_header(header_rows)
 
             # parse body
-            body = []
+            body_rows = []
             row = f.readline()
             while row and "#" * 8 not in row:  # start header section
-                body.append(row)
+                body_rows.append(row)
                 row = f.readline()
-            body = parse_body(body)
+            body = parse_body(body_rows)
             header["data"] = body
             sections[header["variable"]] = header
     return sections

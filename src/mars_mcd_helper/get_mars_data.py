@@ -139,8 +139,10 @@ def fetch_data(outdir: Union[Path, str] = ".", fetch_data: bool = True, fetch_im
         img_url = urlbase + soup.bod.img["src"].replace("../", "")
         logger.info(f"Fetching img from {img_url}")
         r = requests.get(img_url)
+        if not dataf:
+            dataf = outdir / generate_fn(**params)
         imgf = dataf.with_suffix("png")
-        with imgf.open("rb") as f:
-            f.write(r.content)
+        with imgf.open("wb") as im:
+            im.write(r.content)
 
     return _FetchedFiles(dataf, imgf)
