@@ -119,8 +119,6 @@ def read_ascii_data(dataf: Path) -> dict:
         while True:
             if not row:
                 break
-            while "#" * 8 not in row:  # start header section
-                row = f.readline()
             row = f.readline()  # skip ###### row
             header_rows = []
             while "#" * 8 not in row:
