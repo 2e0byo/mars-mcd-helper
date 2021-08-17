@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- insertion marker -->
 ## [v0.0.6rc1](https://github.com/2e0byo/mars-mcd-helper/releases/tag/v0.0.6rc1) - 2021-08-17
+Almost complete; mypy and linter happy.
 
 <small>[Compare with v0.0.5](https://github.com/2e0byo/mars-mcd-helper/compare/v0.0.5...v0.0.6rc1)</small>
 
