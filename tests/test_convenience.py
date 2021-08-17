@@ -1,3 +1,4 @@
+"""Tests for convenience.py"""
 import os
 
 import pytest

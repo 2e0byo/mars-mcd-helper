@@ -1,3 +1,8 @@
+"""
+Convenience functions to call everything.
+
+Anything implemented here should be caching.
+"""
 from pathlib import Path
 from typing import Optional, Tuple
 

@@ -106,6 +106,9 @@ def read_ascii_data(dataf: Path) -> dict:
     Returns:
         (dict): The data.
 
+    Raises:
+        ValueError: Failed to parse supplied file.
+
     """
     sections = {}
     with dataf.open() as f:

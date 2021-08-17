@@ -13,7 +13,7 @@ nav:
   - License: license.md
 - Code Reference:
   - cli.py: reference/cli.md
-  - mars_mcd_helper: reference/mars_mcd_helper.md
+  - convenience.py: reference/convenience.md
   - get_mars_data.py: reference/get_mars_data.md
   - read_mars_data.py: reference/read_mars_data.md
 - Development:
