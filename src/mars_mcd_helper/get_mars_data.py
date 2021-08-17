@@ -1,5 +1,7 @@
-"""This module handles getting data from the MCD by scraping the cgi interface.
- We simply pass parameters up in the url, like the web version interface does.
+"""
+This module handles getting data from the MCD by scraping the cgi interface.
+
+We simply pass parameters up in the url, like the web version interface does.
 Then we scrape the resulting web page for the link to the data and (optionally)
 the image[s].
 
@@ -7,11 +9,12 @@ the image[s].
 Note that this is a simple scraper and is not in any sense affiliated with the
 MCD project.  Please do not run it against the server too often or
 unreasonably.  Where possible use the saved output (this is why we provide a
-saved output)."""
+saved output).
+"""
+from collections import namedtuple
 from logging import getLogger
 from pathlib import Path
 from typing import Union
-from collections import namedtuple
 
 import requests
 from bs4 import BeautifulSoup
@@ -70,7 +73,10 @@ _FetchedFiles = namedtuple("_FetchedFiles", ["dataf", "imgf"])
 
 
 def generate_fn(**params) -> str:
-    """Generate a unique filename from given params.  This function is used
+    """
+    Generate a unique filename from given params.
+
+    This function is used
     internally with the parameters used by `fetch_data()`.  It is provided here
     in case you need to generate the filename from a given set of params.
 
@@ -85,18 +91,25 @@ def generate_fn(**params) -> str:
 
 
 class FetchingError(Exception):
-    """Error fetching resource.  The server returns `200` with an html error
-    message, so we raise an exception and pass the error message up."""
+    """
+    Error fetching resource.
+
+    The server returns `200` with an html error
+    message, so we raise an exception and pass the error message up.
+    """
 
 
-def fetch_data(outdir: Union[Path, str] = ".", fetch_data: bool = True, fetch_img: bool = False, **params):
-    """Fetch data from the MCD and save in outdir.  Keyword arguments (other
+def fetch_data(outdir: Union[Path, str] = ".", get_data: bool = True, get_img: bool = False, **params):
+    """
+    Fetch data from the MCD and save in outdir.
+
+    Keyword arguments (other
     than `outdir`) will override the defaults in `base_params`.
 
     Args:
         outdir (Union[Path, str]): dir to save in (Default value = ".")
-        fetch_data (bool): fetch data or not (Default value = True)
-        fetch_img (bool): fetch img or not (Default value = False)
+        get_data (bool): get data or not (Default value = True)
+        get_img (bool): get img or not (Default value = False)
         **params: Parameters to override.
 
     Raises:
@@ -127,7 +140,7 @@ def fetch_data(outdir: Union[Path, str] = ".", fetch_data: bool = True, fetch_im
 
     dataf, imgf = None, None
 
-    if fetch_data:
+    if get_data:
         data_url = urlbase + soup.body.a["href"].replace("../", "")
         logger.info(f"Fetching ascii data from {data_url}")
         r = requests.get(data_url)
@@ -135,7 +148,7 @@ def fetch_data(outdir: Union[Path, str] = ".", fetch_data: bool = True, fetch_im
         with dataf.open("w") as f:
             f.write(r.text)
 
-    if fetch_img:
+    if get_img:
         img_url = urlbase + soup.bod.img["src"].replace("../", "")
         logger.info(f"Fetching img from {img_url}")
         r = requests.get(img_url)
