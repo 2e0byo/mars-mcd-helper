@@ -1,6 +1,7 @@
 """Tests for getting data."""
 import pytest
-from mars_mcd_helper.get_mars_data import fetch_data, generate_fn, FetchingError
+
+from mars_mcd_helper.get_mars_data import FetchingError, fetch_data, generate_fn
 
 
 def test_generate_fn():

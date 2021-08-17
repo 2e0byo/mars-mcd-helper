@@ -41,30 +41,24 @@ def parse_header(lines: List[str]) -> dict:
     # written to be readable by people beginning python, so rather verbose.
     data = {}
     match = re.search("MCD_(.+) with (.+).", lines[0])
-    if match:
-        data["mcd_version"] = match.group(1)
-        data["model"] = match.group(2)
+    data["mcd_version"] = match.group(1)  # type: ignore
+    data["model"] = match.group(2)  # type: ignore
     match = re.search("Ls (.+). Altitude (.+) ALS Local time (.+)", lines[1])
-    if match:
-        data["ls"] = match.group(1)
-        data["altitude"] = match.group(2)
-        data["local_time"] = match.group(3).strip()
+    data["ls"] = match.group(1)  # type: ignore
+    data["altitude"] = match.group(2)  # type: ignore
+    data["local_time"] = match.group(3).strip()  # type: ignore
     assert "-" * 6 in lines[2]
     match = re.search("Column 1 is (.+)", lines[3])
-    if match:
-        data["column_1"] = match.group(1)
+    data["column_1"] = match.group(1)  # type: ignore
 
     match = re.search(r"Columns 2\+ are (.+)", lines[4])
-    if match:
-        data["variable"] = match.group(1)
+    data["variable"] = match.group(1)  # type: ignore
 
     match = re.search("Line 1 is (.+)", lines[5])
-    if match:
-        data["keys"] = match.group(1)
+    data["keys"] = match.group(1)  # type: ignore
     assert "-" * 6 in lines[6]
     match = re.search("Retrieved on: (.+)", lines[7])
-    if match:
-        data["retrieval_date"] = datetime.fromisoformat(match.group(1))  # type: ignore
+    data["retrieval_date"] = datetime.fromisoformat(match.group(1))  # type: ignore
     return data
 
 
@@ -124,6 +118,10 @@ def read_ascii_data(dataf: Path) -> dict:
             while "#" * 8 not in row:
                 header_rows.append(row)
                 row = f.readline()
+                if not row:
+                    break
+            if len(header_rows) < 8:
+                raise ValueError("Unable to get header from file")
             header = parse_header(header_rows)
 
             # parse body
