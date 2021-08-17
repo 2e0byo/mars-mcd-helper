@@ -23,3 +23,22 @@ def test_fetching_error(tmp_path, mocker):
     mocked_get.return_value.text = "<html><body>Ooops! mocked error</body></html>"
     with pytest.raises(FetchingError, match="<html><body>Ooops! mocked error</body></html>"):
         fetch_data(outdir=tmp_path)
+
+
+def test_str_outdir(tmp_path, mocker):
+    mocked_get = mocker.patch("requests.get")
+    mocked_get.return_value.text = "<html><body><a href='here'>link</a></body></html>"
+    dataf, imgf = fetch_data(str(tmp_path))
+    mocked_get.assert_called_with("http://www-mars.lmd.jussieu.fr/mcd_python/here")
+    assert dataf.exists()
+    assert not imgf
+
+
+def test_imgf(tmp_path, mocker):
+    mocked_get = mocker.patch("requests.get")
+    mocked_get.return_value.text = "<html><body><a href='here'>link</a><img src='there'/></body></html>"
+    mocked_get.return_value.content = b"hello"
+    dataf, imgf = fetch_data(tmp_path, get_img=True, get_data=False)
+    mocked_get.assert_called_with("http://www-mars.lmd.jussieu.fr/mcd_python/there")
+    assert not dataf
+    assert imgf.exists()

@@ -134,6 +134,7 @@ def fetch_data(outdir: Union[Path, str] = ".", get_data: bool = True, get_img: b
     r = requests.get(url, params=p)
     if "Ooops!" in r.text:
         raise FetchingError(f"Failed to download, server said {r.text}")
+    print(r, r.text)
     soup = BeautifulSoup(r.text, features="html.parser")
     if isinstance(outdir, str):
         outdir = Path(outdir).expanduser().resolve()
@@ -149,12 +150,10 @@ def fetch_data(outdir: Union[Path, str] = ".", get_data: bool = True, get_img: b
             f.write(r.text)
 
     if get_img:
-        img_url = urlbase + soup.bod.img["src"].replace("../", "")
+        img_url = urlbase + soup.body.img["src"].replace("../", "")
         logger.info(f"Fetching img from {img_url}")
         r = requests.get(img_url)
-        if not dataf:
-            dataf = outdir / generate_fn(**params)
-        imgf = dataf.with_suffix("png")
+        imgf = (outdir / generate_fn(**params)).with_suffix(".png")
         with imgf.open("wb") as im:
             im.write(r.content)
 
