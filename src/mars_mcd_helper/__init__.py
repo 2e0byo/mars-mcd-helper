@@ -1,7 +1,5 @@
 """
-mars-MCD-helper package.
-
-Utilities for retrieving and processing data from the Mars Climate Database
+Utilities for retrieving and processing data from the Mars Climate Database.
 """
 
 from typing import List
@@ -18,7 +16,7 @@ def get_parse_data(**kwargs) -> dict:
     already downloaded data and uses that in preference.
 
     Args:
-        **kwargs: to pass to fetch.
+        **kwargs: to pass to fetch.  See the documentation of `fetch_data`.
 
     Returns:
         (dict): The data.
