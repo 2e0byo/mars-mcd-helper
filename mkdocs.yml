@@ -13,8 +13,9 @@ nav:
   - License: license.md
 - Code Reference:
   - cli.py: reference/cli.md
-  - get_mars_data: reference/get_mars_data.md
-  - read_mars_data: reference/read_mars_data.md
+  - mars_mcd_helper: reference/mars_mcd_helper.md
+  - get_mars_data.py: reference/get_mars_data.md
+  - read_mars_data.py: reference/read_mars_data.md
 - Development:
   - Contributing: contributing.md
   - Coverage report: coverage.md
