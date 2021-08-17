@@ -384,8 +384,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../mars_mcd_helper/" class="md-nav__link">
-        mars_mcd_helper
+      <a href="../convenience/" class="md-nav__link">
+        convenience.py
       </a>
     </li>
   
@@ -781,30 +781,24 @@
     <span class="c1"># written to be readable by people beginning python, so rather verbose.</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;MCD_(.+) with (.+).&quot;</span><span class="p">,</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;mcd_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;mcd_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
     <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Ls (.+). Altitude (.+) ALS Local time (.+)&quot;</span><span class="p">,</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;ls&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;altitude&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;local_time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;ls&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;altitude&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;local_time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
     <span class="k">assert</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">6</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Column 1 is (.+)&quot;</span><span class="p">,</span> <span class="n">lines</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;column_1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;column_1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
     <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Columns 2\+ are (.+)&quot;</span><span class="p">,</span> <span class="n">lines</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
     <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Line 1 is (.+)&quot;</span><span class="p">,</span> <span class="n">lines</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;keys&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;keys&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
     <span class="k">assert</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">6</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
     <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Retrieved on: (.+)&quot;</span><span class="p">,</span> <span class="n">lines</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;retrieval_date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;retrieval_date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
     <span class="k">return</span> <span class="n">data</span>
 </code></pre></div>
         </details>
@@ -939,6 +933,21 @@
     </tr>
   </tbody>
 </table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>Failed to parse supplied file.</p></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>mars_mcd_helper/read_mars_data.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">read_ascii_data</span><span class="p">(</span><span class="n">dataf</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
@@ -951,6 +960,9 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        (dict): The data.</span>
 
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: Failed to parse supplied file.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sections</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">with</span> <span class="n">dataf</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -958,13 +970,15 @@
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">row</span><span class="p">:</span>
                 <span class="k">break</span>
-            <span class="k">while</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">8</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>  <span class="c1"># start header section</span>
-                <span class="n">row</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
             <span class="n">row</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>  <span class="c1"># skip ###### row</span>
             <span class="n">header_rows</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">while</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">8</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
                 <span class="n">header_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
                 <span class="n">row</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">row</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">header_rows</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unable to get header from file&quot;</span><span class="p">)</span>
             <span class="n">header</span> <span class="o">=</span> <span class="n">parse_header</span><span class="p">(</span><span class="n">header_rows</span><span class="p">)</span>
 
             <span class="c1"># parse body</span>

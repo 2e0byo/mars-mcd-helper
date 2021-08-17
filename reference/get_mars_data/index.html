@@ -384,8 +384,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../mars_mcd_helper/" class="md-nav__link">
-        mars_mcd_helper
+      <a href="../convenience/" class="md-nav__link">
+        convenience.py
       </a>
     </li>
   
@@ -816,6 +816,7 @@ For more information on any particular parameter see the web interface.</p>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
     <span class="k">if</span> <span class="s2">&quot;Ooops!&quot;</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FetchingError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to download, server said </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">outdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
@@ -831,12 +832,10 @@ For more information on any particular parameter see the web interface.</p>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">get_img</span><span class="p">:</span>
-        <span class="n">img_url</span> <span class="o">=</span> <span class="n">urlbase</span> <span class="o">+</span> <span class="n">soup</span><span class="o">.</span><span class="n">bod</span><span class="o">.</span><span class="n">img</span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">img_url</span> <span class="o">=</span> <span class="n">urlbase</span> <span class="o">+</span> <span class="n">soup</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">img</span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fetching img from </span><span class="si">{</span><span class="n">img_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">img_url</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">dataf</span><span class="p">:</span>
-            <span class="n">dataf</span> <span class="o">=</span> <span class="n">outdir</span> <span class="o">/</span> <span class="n">generate_fn</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-        <span class="n">imgf</span> <span class="o">=</span> <span class="n">dataf</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;png&quot;</span><span class="p">)</span>
+        <span class="n">imgf</span> <span class="o">=</span> <span class="p">(</span><span class="n">outdir</span> <span class="o">/</span> <span class="n">generate_fn</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">))</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.png&quot;</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">imgf</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">im</span><span class="p">:</span>
             <span class="n">im</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 
@@ -952,7 +951,7 @@ in case you need to generate the filename from a given set of params.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../mars_mcd_helper/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../convenience/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -961,7 +960,7 @@ in case you need to generate the filename from a given set of params.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                mars_mcd_helper
+                convenience.py
               </div>
             </div>
           </a>

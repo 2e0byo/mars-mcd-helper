@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://2e0byo.github.io/mars-mcd-helper/reference/mars_mcd_helper/">
+        <link rel="canonical" href="https://2e0byo.github.io/mars-mcd-helper/reference/convenience/">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-6.2.8">
     
     
       
-        <title>mars_mcd_helper - mars-MCD-helper</title>
+        <title>convenience.py - mars-MCD-helper</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mars_mcd_helper.__init__" class="md-skip">
+        <a href="#mars_mcd_helper.convenience" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              mars_mcd_helper
+              convenience.py
             
           </span>
         </div>
@@ -391,12 +391,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          mars_mcd_helper
+          convenience.py
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        mars_mcd_helper
+        convenience.py
       </a>
       
         
@@ -411,14 +411,14 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mars_mcd_helper.__init__" class="md-nav__link">
-    mars_mcd_helper.__init__
+  <a href="#mars_mcd_helper.convenience" class="md-nav__link">
+    mars_mcd_helper.convenience
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mars_mcd_helper.__init__.get_parse_data" class="md-nav__link">
+  <a href="#mars_mcd_helper.convenience.get_parse_data" class="md-nav__link">
     get_parse_data()
   </a>
   
@@ -540,14 +540,14 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mars_mcd_helper.__init__" class="md-nav__link">
-    mars_mcd_helper.__init__
+  <a href="#mars_mcd_helper.convenience" class="md-nav__link">
+    mars_mcd_helper.convenience
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mars_mcd_helper.__init__.get_parse_data" class="md-nav__link">
+  <a href="#mars_mcd_helper.convenience.get_parse_data" class="md-nav__link">
     get_parse_data()
   </a>
   
@@ -565,19 +565,20 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/2e0byo/mars-mcd-helper/edit/master/docs/reference/mars_mcd_helper.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/2e0byo/mars-mcd-helper/edit/master/docs/reference/convenience.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>mars_mcd_helper</h1>
+                  <h1>convenience.py</h1>
                 
                 <div class="doc doc-object doc-module">
 
-<a id="mars_mcd_helper.__init__"></a>
+<a id="mars_mcd_helper.convenience"></a>
     <div class="doc doc-contents first">
 
-      <p>Utilities for retrieving and processing data from the Mars Climate Database.</p>
+      <p>Convenience functions to call everything.</p>
+<p>Anything implemented here should be caching.</p>
 
 
 
@@ -590,16 +591,15 @@
 
 
 
-
   <div class="doc doc-object doc-function">
 
 
 
-<h2 id="mars_mcd_helper.__init__.get_parse_data" class="doc doc-heading">
+<h2 id="mars_mcd_helper.convenience.get_parse_data" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">get_parse_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
 
-<a href="#mars_mcd_helper.__init__.get_parse_data" class="headerlink" title="Permanent link">¤</a></h2>
+<a href="#mars_mcd_helper.convenience.get_parse_data" class="headerlink" title="Permanent link">¤</a></h2>
 
     <div class="doc doc-contents ">
 
@@ -642,7 +642,7 @@ already downloaded data and uses that in preference.</p>
   </tbody>
 </table>
         <details class="quote">
-          <summary>Source code in <code>mars_mcd_helper/__init__.py</code></summary>
+          <summary>Source code in <code>mars_mcd_helper/convenience.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_parse_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;Get and parse data.</span>
 
@@ -660,16 +660,19 @@ already downloaded data and uses that in preference.</p>
         <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;outdir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;outdir&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;outdir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;outdir&quot;</span><span class="p">])</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;outdir&quot;</span><span class="p">,</span> <span class="s2">&quot;fetch_img&quot;</span><span class="p">,</span> <span class="s2">&quot;fetch_data&quot;</span><span class="p">}}</span>  <span class="c1"># type: ignore</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;outdir&quot;</span><span class="p">,</span> <span class="s2">&quot;get_img&quot;</span><span class="p">,</span> <span class="s2">&quot;get_data&quot;</span><span class="p">}}</span>  <span class="c1"># type: ignore</span>
     <span class="n">dataf</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;outdir&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">generate_fn</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-    <span class="n">imgf</span> <span class="o">=</span> <span class="n">dataf</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;png&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="s2">&quot;fetch_img&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;fetch_img&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">dataf</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;fetch_data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">imgf</span> <span class="o">=</span> <span class="n">dataf</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.png&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;get_img&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;get_img&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">get_data</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">dataf</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
-    <span class="n">get_img</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;fetch_img&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">imgf</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+    <span class="n">get_img</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;get_img&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">imgf</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
     <span class="k">if</span> <span class="nb">any</span><span class="p">((</span><span class="n">get_data</span><span class="p">,</span> <span class="n">get_img</span><span class="p">)):</span>
-        <span class="n">dataf</span><span class="p">,</span> <span class="n">imgf</span> <span class="o">=</span> <span class="n">fetch_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">read_ascii_data</span><span class="p">(</span><span class="n">dataf</span><span class="p">),</span> <span class="n">imgf</span> <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;fetch_img&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">fetch_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">read_ascii_data</span><span class="p">(</span><span class="n">dataf</span><span class="p">),</span> <span class="n">imgf</span> <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;get_img&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
 </code></pre></div>
         </details>
     </div>
