@@ -436,8 +436,20 @@
   
   
     <li class="md-nav__item">
+      <a href="reference/mars_mcd_helper/" class="md-nav__link">
+        mars_mcd_helper
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="reference/get_mars_data/" class="md-nav__link">
-        get_mars_data
+        get_mars_data.py
       </a>
     </li>
   
@@ -449,7 +461,7 @@
   
     <li class="md-nav__item">
       <a href="reference/read_mars_data/" class="md-nav__link">
-        read_mars_data
+        read_mars_data.py
       </a>
     </li>
   
@@ -584,11 +596,16 @@
 <a href="https://pypi.org/project/mars-mcd-helper/"><img alt="pypi version" src="https://img.shields.io/pypi/v/mars-mcd-helper.svg" /></a>
 <a href="https://gitter.im/mars-mcd-helper/community"><img alt="gitter" src="https://badges.gitter.im/join%20chat.svg" /></a></p>
 <p>Utilities for retrieving and processing data from the Mars Climate Database.</p>
-<p>Currently nothing more than an interface to <a href="http://www-mars.lmd.jussieu.fr/mcd_python">www-mars.lmd.jussie.fr</a>.</p>
+<p>Currently nothing more than an interface to
+<a href="http://www-mars.lmd.jussieu.fr/mcd_python">www-mars.lmd.jussie.fr</a>.  Note that
+this tool is not in any way affiliated with that excellent project.  It is
+simply a requests-based scraper.  Overuse or repetitive fetching could result in
+ratelimiting or banning from <code>jussieu.fr</code>.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">¤</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">mars_mcd_helper</span> <span class="kn">import</span> <span class="n">fetch_data</span><span class="p">,</span> <span class="n">read_ascii_data</span>
-<span class="n">outf</span> <span class="o">=</span> <span class="n">fetch_data</span><span class="p">(</span><span class="n">outdir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="mf">87.4</span><span class="p">)</span>
+<span class="n">outf</span><span class="p">,</span> <span class="n">imgf</span> <span class="o">=</span> <span class="n">fetch_data</span><span class="p">(</span><span class="n">outdir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">get_img</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="mf">87.4</span><span class="p">)</span>
 <span class="n">sections</span> <span class="o">=</span> <span class="n">read_ascii_data</span><span class="p">(</span><span class="n">outf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Image to compare at&quot;</span><span class="p">,</span> <span class="n">imgf</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">¤</a></h2>
 <p>mars-MCD-helper requires Python 3.7 or above.</p>
