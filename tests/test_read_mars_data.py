@@ -169,7 +169,7 @@ def test_parse_file():
     """Test parsing file."""
     testf = Path("tests/data.txt")
     if not testf.exists():
-        raise Exception(f"Couldn't find file in {Path('.').resolve()} {list(path('.').glob('*'))}")
+        raise Exception(f"Couldn't find file in {Path('.').resolve()} {list(Path('.').glob('*'))}")
     sections = read_ascii_data(testf)
     assert list(sections.keys()) == [
         "Water vapor column (kg/m2)",
