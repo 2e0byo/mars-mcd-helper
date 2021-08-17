@@ -26,7 +26,7 @@ def get_parse_data(**kwargs) -> dict:
         kwargs["outdir"] = Path(".")
     elif isinstance(kwargs["outdir"], str):
         kwargs["outdir"] = Path(kwargs["outdir"])
-    dataf = kwargs["outdir"] / generate_fn({k:v for k:v in params if k != "outdir"})
+    dataf = kwargs["outdir"] / generate_fn({k: v for k, v in params if k != "outdir"})
     if not dataf.exists():
         dataf = fetch_data(**kwargs)
     return read_ascii_data(dataf)
