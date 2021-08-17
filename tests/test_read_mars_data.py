@@ -167,7 +167,7 @@ def test_parse_header():
 
 def test_parse_file():
     """Test parsing file."""
-    sections = read_ascii_data(Path("tests/data.txt"))
+    sections = read_ascii_data(Path("./tests/data.txt"))
     assert list(sections.keys()) == [
         "Water vapor column (kg/m2)",
         "Temperature (K)",
