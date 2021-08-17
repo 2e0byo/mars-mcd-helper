@@ -37,6 +37,7 @@ def chtmpdir(tmp_path):
 
 
 def test_get_parse_cache_none(chtmpdir, mocker):
+    tmp_path = chtmpdir
     mocked_get = mocker.patch("requests.get")
     mocked_get.return_value.text = f"<html><body><a href='here'>link</a><img src='there'/></body></html>"
     with (tmp_path / generate_fn()).open("w") as f:
