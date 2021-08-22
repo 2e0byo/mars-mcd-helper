@@ -6,7 +6,7 @@ from mars_mcd_helper.get_mars_data import FetchingError, fetch_data, generate_fn
 
 def test_generate_fn():
     """Test generating filename."""
-    assert generate_fn(var1="this", var2="that", num=7) == "marsdata_var1_this-var2_that-num_7.txt"
+    assert generate_fn(var1="this", var2="that", num=7, zero=0) == "marsdata_var1_this-var2_that-num_7-zero_0.txt"
 
 
 def test_fetch_data(tmp_path):

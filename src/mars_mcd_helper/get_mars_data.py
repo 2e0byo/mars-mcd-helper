@@ -86,7 +86,7 @@ def generate_fn(**params) -> str:
     Returns:
         (str): Fn from params.
     """
-    fn = "-".join(f"{k}_{x}" for k, x in params.items() if x)
+    fn = "-".join(f"{k}_{x}" for k, x in params.items() if x is not None)
     return f"marsdata_{fn}.txt"
 
 
