@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v0.0.7](https://github.com/2e0byo/mars-mcd-helper/releases/tag/v0.0.7) - 2021-08-22
+Fix stupid bug with falsyness of 0 which risked cache collisions.
+
+<small>[Compare with v0.0.6](https://github.com/2e0byo/mars-mcd-helper/compare/v0.0.6...v0.0.7)</small>
 ## [v0.0.6](https://github.com/2e0byo/mars-mcd-helper/releases/tag/v0.0.6) - 2021-08-17
 All implemented and documented.
 
