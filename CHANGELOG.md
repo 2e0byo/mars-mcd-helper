@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v0.0.8](https://github.com/2e0byo/mars-mcd-helper/releases/tag/v0.0.8) - 2021-08-23
+Add exponential backoff.
+
+<small>[Compare with v0.0.7](https://github.com/2e0byo/mars-mcd-helper/compare/v0.0.7...v0.0.8)</small>
+
 ## [v0.0.7](https://github.com/2e0byo/mars-mcd-helper/releases/tag/v0.0.7) - 2021-08-22
 Fix stupid bug with falsyness of 0 which risked cache collisions.
 
@@ -37,4 +42,3 @@ All implemented and documented.
 ## [v0.0.1](https://github.com/2e0byo/mars-mcd-helper/releases/tag/v0.0.1) - 2021-08-16
 
 <small>[Compare with first commit](https://github.com/2e0byo/mars-mcd-helper/compare/f964e97df75de77f68fe8746094ba6d22683b14f...v0.0.1)</small>
-
