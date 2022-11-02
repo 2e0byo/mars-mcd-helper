@@ -43,7 +43,7 @@ def parse_header(lines: List[str]) -> dict:
     match = re.search("MCD_(.+) with (.+).", lines[0])
     data["mcd_version"] = match.group(1)  # type: ignore
     data["model"] = match.group(2)  # type: ignore
-    match = re.search("Ls (.+). Altitude (.+) ALS Local time (.+)", lines[1])
+    match = re.search("Ls (.+). Altitude (.+) ALS.* Local time (.+)", lines[1])
     data["ls"] = match.group(1)  # type: ignore
     data["altitude"] = match.group(2)  # type: ignore
     data["local_time"] = match.group(3).strip()  # type: ignore

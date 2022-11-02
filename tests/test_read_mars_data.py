@@ -143,7 +143,7 @@ def test_parse_header():
     """Test parsing header."""
     data = """##########################################################################################
 ### MCD_v5.3 with climatology average solar scenario.
-### Ls 85.3deg. Altitude 10.0 m ALS Local time 0.0h (at longitude 0)
+### Ls 85.3deg. Altitude 10.0 m ALS. Local time 0.0h (at longitude 0)
 ### --------------------------------------------------------------------------------------
 ### Column 1 is East longitude (degrees)
 ### Columns 2+ are Water vapor column (kg/m2)
